@@ -12,6 +12,8 @@ public class AxeTest {
     private Axe axe;
     private Axe axeDurabilityZero;
 
+    private Axe axeDurabilityNegative;
+
     private static final int DUMMY_HEALTH = 100;
     private static final int DUMMY_EXPERIENCE = 10;
     private Target target;
@@ -20,6 +22,7 @@ public class AxeTest {
     public void setUp() {
         this.axe = new Axe(AXE_ATTACK, AXE_DURABILITY);
         this.axeDurabilityZero = new Axe(AXE_ATTACK, 0);
+        this.axeDurabilityNegative = new Axe(AXE_ATTACK, - 1);
 
         this.target = Mockito.mock(Target.class);
     }
@@ -34,7 +37,12 @@ public class AxeTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    public void testAttackThrowsIllegalStateWhenDurabilityZeroOrNegative() {
+    public void testAttackThrowsIllegalStateWhenDurabilityZero() {
         axeDurabilityZero.attack(target);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testAttackThrowsIllegalStateWhenDurabilityNegative() {
+        axeDurabilityNegative.attack(target);
     }
 }

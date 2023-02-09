@@ -36,7 +36,7 @@ public class DummyTest {
 
     @Test
     public void testGiveExperienceIfIsDead() {
-        int actual = deadDummy.  giveExperience();
+        int actual = deadDummy.giveExperience();
         assertEquals(DEAD_EXPERIENCE, actual);
     }
 
